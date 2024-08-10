@@ -33,11 +33,12 @@ Be mindful of the varying levels of technical knowledge among users and adjust e
 export async function POST(req) {
   const openai = new OpenAI({
     baseURL: "https://openrouter.ai/api/v1",
-    apiKey: $OPENROUTER_API_KEY,
-    defaultHeaders: {
-      "HTTP-Referer": $YOUR_SITE_URL, // Optional, for including your app on openrouter.ai rankings.
-      "X-Title": $YOUR_SITE_NAME, // Optional. Shows in rankings on openrouter.ai.
-    }
+    apiKey: process.env.NEXT_PUBLIC_OPENROUTER_API_KEY,
+    // apiKey: $OPENROUTER_API_KEY,
+    // defaultHeaders: {
+    //   "HTTP-Referer": $YOUR_SITE_URL, // Optional, for including your app on openrouter.ai rankings.
+    //   "X-Title": $YOUR_SITE_NAME, // Optional. Shows in rankings on openrouter.ai.
+    // }
   }) // Create a new instance of the OpenAI client
   const data = await req.json() // Parse the JSON body of the incoming request
 
